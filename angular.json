@@ -99,8 +99,28 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "prueba-tecnica-newrona:build:production",
+              "serveTarget": "prueba-tecnica-newrona:serve:production"
+            },
+            "development": {
+              "buildTarget": "prueba-tecnica-newrona:build:development",
+              "serveTarget": "prueba-tecnica-newrona:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

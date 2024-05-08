@@ -1,0 +1,129 @@
+<div
+  *ngIf="showModal"
+  class="overflow-x-hidden overflow-y-auto fixed inset-0 z-100 outline-none focus:outline-none justify-center items-center flex"
+>
+  <div class="relative w-auto my-6 mx-auto max-w-6xl">
+    <!--content-->
+    <div
+      class="border-0 rounded-lg shadow-lg relative min-w-80 flex flex-col w-full bg-white outline-none focus:outline-none"
+    >
+      <!--header-->
+      <div
+        class="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t"
+      >
+        <h3 class="text-3xl font-semibold">
+          {{ toEdit ? "Editar" : "Crear" }} Operario
+        </h3>
+        <button
+          class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+          (click)="onClose()"
+        >
+          <span
+            class="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none"
+          >
+            ×
+          </span>
+        </button>
+      </div>
+      <!--contenido-->
+      <form [formGroup]="workerForm">
+        <div class="relative p-6 flex-auto">
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-sm font-bold mb-2"
+              htmlFor="grid-password"
+            >
+              Nombre y apellido
+            </label>
+
+            <div
+              class="flex justify-between border-0 bg-gray-200 rounded text-sm shadow"
+            >
+              <input
+                type="text"
+                name="name"
+                formControlName="name"
+                [class.error]="
+                  workerForm.controls['name'].invalid && !submitInvalid
+                "
+                class="px-3 py-3 placeholder-slate-400 bg-gray-200 text-gray-600 focus:outline-none focus:ring w-full duration-150"
+                placeholder=""
+              />
+            </div>
+            <div
+              *ngIf="workerForm.controls['name'].invalid && !submitInvalid"
+              class="alertInput"
+            >
+              <p
+                *ngIf="workerForm.controls['name'].errors?.['required'] "
+                class=""
+              >
+                El campo nombre y apellido es obligatorio
+              </p>
+            </div>
+          </div>
+          <div class="relative w-full mb-3">
+            <label
+              class="block uppercase text-blueGray-600 text-sm font-bold mb-2"
+              htmlFor="grid-password"
+            >
+              Cédula
+            </label>
+
+            <div
+              class="flex justify-between border-0 bg-gray-200 rounded text-sm shadow"
+            >
+              <input
+                type="number"
+                name="cedula"
+                formControlName="cedula"
+                [class.error]="
+                  workerForm.controls['cedula'].invalid && !submitInvalid
+                "
+                class="px-3 py-3 placeholder-slate-400 bg-gray-200 text-gray-600 focus:outline-none focus:ring w-full"
+                placeholder=""
+              />
+            </div>
+            <div
+              *ngIf="workerForm.controls['cedula'].invalid && !submitInvalid"
+              class="alertInput"
+            >
+              <p
+                *ngIf="workerForm.controls['cedula'].errors?.['required'] "
+                class=""
+              >
+                El campo cedula es obligatorio
+              </p>
+              <p
+                *ngIf="workerForm.controls['cedula'].errors?.['minlength'] "
+                class=""
+              >
+                La contraseña debe de tener mas de 6 caracteres
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--Botones-->
+        <div
+          class="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b"
+        >
+          <button
+            class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+            type="button"
+            (click)="onClose()"
+          >
+            Cancelar
+          </button>
+          <button
+            class="bg-buttons text-white active:bg-buttons-secondary active:text-black font-bold uppercase text-sm px-6 py-3 rounded shadow mr-1 mb-1"
+            type="button"
+            (click)="validateFormWorker()"
+          >
+            {{ toEdit ? "Editar" : "Crear" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div *ngIf="showModal" class="opacity-25 fixed inset-0 z-40 bg-black"></div>

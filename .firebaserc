@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pruebatecnicanewrona-22ae5": {
+      "hosting": {
+        "prueba-tecnica-newrona": [
+          "pruebatecnicanewrona-22ae5"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pruebatecnicanewrona-22ae5"
+  }
+}

@@ -1,0 +1,113 @@
+<app-workers-modal
+  [showModal]="showModal"
+  [worker]="worker"
+  [toEdit]="toEdit"
+  (changeModal)="changeModal($event)"
+></app-workers-modal>
+<div class="flex flex-wrap h-full min-h[80vh]">
+  <div class="w-full lg:w-full md:px-4">
+    <div
+      class="relative bg-white flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+    >
+      <div class="rounded-t bg-white mb-0 px-2 md:px-3 lg:px-6 py-6">
+        <div class="text-center flex-wrap flex justify-between">
+          <h6 class="text-black text-2xl font-bold uppercase">Operarios</h6>
+          <div class="flex justify-end">
+            <button
+              class="bg-buttons text-white hover:bg-buttons-secondary hover:text-black font-bold uppercase text-[10px] md:text-sm lg:text-base px-2 md:px-4 py-1 md:py-2 rounded shadow hover:shadow-md mr-1"
+              type="button"
+              (click)="changeModal(true)"
+            >
+              Crear operario
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+        <!-- <app-table-product [color]="'light'"></app-table-product> -->
+        <div
+          class="relative py-4flex flex-col min-w-0 break-words w-full mb-6 rounded"
+        >
+          <div class="rounded-t mb-0 px-4 border-0">
+            <div class="flex flex-wrap items-center">
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-lg"></h3>
+              </div>
+            </div>
+          </div>
+          <div class="block w-full overflow-x-auto">
+            <!-- Projects table -->
+            <table class="items-center w-full bg-transparent border-collapse">
+              <thead>
+                <tr>
+                  <th
+                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                  >
+                    Nombre
+                  </th>
+                  <th
+                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                  >
+                    Cédula
+                  </th>
+                  <th
+                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                  >
+                    Creado
+                  </th>
+                  <th
+                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
+                  >
+                    Opciones
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let worker of workers$ | async">
+                  <td
+                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                  >
+                    {{ worker.name }}
+                  </td>
+                  <td
+                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                  >
+                    {{ worker.cedula }}
+                  </td>
+                  <td
+                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                  >
+                    {{ convertDate(worker) }}
+                  </td>
+                  <td
+                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                  >
+                    <div class="w-full flex justify-center">
+                      <button
+                        type="button"
+                        (click)="onClickUpdateProduct(worker)"
+                        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5 me-2 mb-2"
+                      >
+                        <i class="fa fa-pencil"></i>
+                      </button>
+
+                      <button
+                        type="button"
+                        (click)="deleteWoker(worker.id)"
+                        class="focus:outline-none text-white bg-red-700 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5 me-2 mb-2"
+                      >
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- @for (worker of workers$ | async; track worker.id) { } -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

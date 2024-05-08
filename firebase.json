@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "prueba-tecnica-newrona",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-central1"
+      }
+    }
+  ]
+}
