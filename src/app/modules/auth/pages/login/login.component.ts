@@ -21,10 +21,7 @@ export class LoginComponent {
   private _authService = inject(AuthService);
   showPassword = false;
   submitInvalid = true;
-  user: UserLogin = {
-    email: '',
-    password: '',
-  };
+
   userForm: FormGroup;
   constructor() {
     this.userForm = new FormGroup({
