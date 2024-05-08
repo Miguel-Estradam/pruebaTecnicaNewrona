@@ -3,13 +3,15 @@
   (changeModal)="changeModal($event)"
 ></app-users-modal>
 <div class="flex flex-wrap h-full min-h[80vh] p-2">
-  <div class="w-full lg:w-full px-4">
+  <div class="w-full lg:w-full md:px-4">
     <div
-      class="relative bg-white flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      class="relative bg-white flex flex-col px-2 pb-5 min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
     >
       <div class="rounded-t bg-white mb-0 px-6 py-6">
         <div class="text-center flex justify-between">
-          <h6 class="text-black text-2xl uppercase font-bold">usuarios</h6>
+          <h6 class="text-black text-lg lg:text-2xl uppercase font-bold">
+            usuarios
+          </h6>
           <div class="flex justify-end">
             <button
               class="bg-buttons text-white hover:bg-buttons-secondary hover:text-black font-bold uppercase text-[10px] md:text-sm lg:text-base px-2 md:px-4 py-1 md:py-2 rounded shadow hover:shadow-md mr-1"
@@ -21,32 +23,32 @@
           </div>
         </div>
       </div>
-      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0 overflow-x-auto">
         <table class="items-center w-full bg-transparent border-collapse">
           <thead>
             <tr>
               <th
-                class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="md:px-2 min-w-28 text-wrap px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Nombre
               </th>
               <th
-                class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class="md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                Cédula
+                Correo
               </th>
               <th
-                class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class=" md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 rol
               </th>
               <th
-                class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                class=" md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
                 Creado
               </th>
               <th
-                class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
+                class="md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
               >
                 Opciones
               </th>
@@ -55,31 +57,32 @@
           <tbody>
             <tr *ngFor="let user of users$ | async">
               <td
-                class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
               >
                 {{ user.name }}
               </td>
               <td
-                class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
               >
                 {{ user.email }}
               </td>
               <td
-                class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                class=" border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
               >
                 {{ user.rol }}
               </td>
               <td
-                class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                class="  border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
               >
                 {{ convertDate(user) }}
               </td>
               <td
-                class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
               >
                 <div class="w-full flex justify-center">
                   <button
                     type="button"
+                    *ngIf="user.rol !== 'administrador'"
                     (click)="deleteUser(user.id)"
                     class="focus:outline-none text-white bg-red-700 font-medium rounded-lg text-xs md:text-sm px-1 md:px-2 py-0.5 me-2 mb-2"
                   >

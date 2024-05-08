@@ -1,16 +1,28 @@
 import { inject, Injectable } from '@angular/core';
 import {
   Auth,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   user,
   UserCredential,
 } from '@angular/fire/auth';
-import { collection, doc, Firestore, getDoc } from '@angular/fire/firestore';
+import {
+  collection,
+  doc,
+  Firestore,
+  getDoc,
+  getDocs,
+  query,
+  where,
+} from '@angular/fire/firestore';
 import Swal from 'sweetalert2';
 import { User } from '../../dashboard/interfaces/users.interface';
 import { Router } from '@angular/router';
+import { showErrorMessage } from '../../../common/serviceMessages';
 
 const PATH = 'Users';
+
+const obj = 'Usuario';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,6 +30,7 @@ export class AuthService {
   private auth: Auth = inject(Auth);
 
   private _firestore = inject(Firestore);
+  private _collection = collection(this._firestore, PATH);
 
   constructor(private router: Router) {}
 
@@ -69,7 +82,7 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): Promise<any> {
+  async login(email: string, password: string): Promise<any> {
     return signInWithEmailAndPassword(this.auth, email, password)
       .then(async (userCredential) => {
         //Verificar que el usuario este dentro de la colección o ha sido eliminado
@@ -103,5 +116,39 @@ export class AuthService {
 
   async signOut(): Promise<void> {
     await this.auth.signOut().then(() => this.router.navigate(['/login']));
+  }
+  async restorePassword(email: string) {
+    const snapshot = await getDocs(
+      query(this._collection, where('email', '==', email))
+    );
+    //verificar si existe el usuario
+    if (snapshot.docs.length == 0) {
+      Swal.fire({
+        title: 'Oops',
+        html: 'Correo electrónico invalido',
+        icon: 'error',
+        confirmButtonText: 'Ok',
+      });
+      return Promise.reject();
+    }
+    await sendPasswordResetEmail(this.auth, email)
+      .then(() => {
+        Swal.fire({
+          title: '¡Correo enviado!',
+          text: 'por favor revisa también la bandeja de SPAM',
+          icon: 'success',
+        });
+      })
+      .catch((error) => {
+        const errorMessage =
+          error.code === 'auth/user-not-found'
+            ? 'Usuario no encontrado en nuestra base de datos, si desea registrarse en nuestra plataforma llámenos o escríbenos por WhatsApp<br>+57 3028619748'
+            : `Por favor intenta nuevamente (${error.message})`;
+        Swal.fire({
+          title: '¡Ocurrió un error!',
+          icon: 'error',
+          html: errorMessage,
+        });
+      });
   }
 }

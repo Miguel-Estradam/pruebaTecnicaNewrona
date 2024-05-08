@@ -5,7 +5,14 @@ import { UsersComponent } from '../modules/dashboard/pages/users/users.component
 import { WorkersComponent } from '../modules/dashboard/pages/workers/workers.component';
 
 export const routes = {
-  auth: [{ path: 'login', component: LoginComponent, title: 'Login' }],
+  auth: [
+    { path: 'login', component: LoginComponent, title: 'Login' },
+    {
+      path: 'restore_password',
+      component: RestorePasswordComponent,
+      title: 'Restablecer contraseña',
+    },
+  ],
   dashboard: [
     // { path: '', component: HomeDashboard },
     {

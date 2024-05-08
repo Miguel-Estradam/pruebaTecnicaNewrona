@@ -7,11 +7,13 @@
 <div class="flex flex-wrap h-full min-h[80vh]">
   <div class="w-full lg:w-full md:px-4">
     <div
-      class="relative bg-white flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
+      class="relative bg-white flex flex-col px-2 pb-5 min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0"
     >
-      <div class="rounded-t bg-white mb-0 px-2 md:px-3 lg:px-6 py-6">
+      <div class="rounded-t bg-white mb-0 px-2 md:px-3  lg:px-6 py-6">
         <div class="text-center flex-wrap flex justify-between">
-          <h6 class="text-black text-2xl font-bold uppercase">Operarios</h6>
+          <h6 class="text-black text-lg lg:text-2xl font-bold uppercase">
+            Operarios
+          </h6>
           <div class="flex justify-end">
             <button
               class="bg-buttons text-white hover:bg-buttons-secondary hover:text-black font-bold uppercase text-[10px] md:text-sm lg:text-base px-2 md:px-4 py-1 md:py-2 rounded shadow hover:shadow-md mr-1"
@@ -23,7 +25,7 @@
           </div>
         </div>
       </div>
-      <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+      <div class="flex-auto px-4 lg:px-10 py-10 pt-0 overflow-x-auto">
         <!-- <app-table-product [color]="'light'"></app-table-product> -->
         <div
           class="relative py-4flex flex-col min-w-0 break-words w-full mb-6 rounded"
@@ -41,22 +43,22 @@
               <thead>
                 <tr>
                   <th
-                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    class="md:px-2 min-w-28 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                   >
                     Nombre
                   </th>
                   <th
-                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    class="md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                   >
                     Cédula
                   </th>
                   <th
-                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+                    class="md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
                   >
-                    Creado
+                    fecha creación
                   </th>
                   <th
-                    class="md:px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
+                    class="md:px-2 px-2 lg:px-6 align-middle border border-solid py-3 text-xs md:text-sm lg:text-base uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-center"
                   >
                     Opciones
                   </th>
@@ -65,22 +67,22 @@
               <tbody>
                 <tr *ngFor="let worker of workers$ | async">
                   <td
-                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                    class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
                   >
                     {{ worker.name }}
                   </td>
                   <td
-                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                    class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
                   >
                     {{ worker.cedula }}
                   </td>
                   <td
-                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                    class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
                   >
                     {{ convertDate(worker) }}
                   </td>
                   <td
-                    class="border-t-0 md:px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
+                    class="border-t-0 md:px-2 px-2 lg:px-6 align-middle border-l-0 border-r-0 text-xs md:text-sm lg:text-base whitespace-nowrap py-4"
                   >
                     <div class="w-full flex justify-center">
                       <button
