@@ -103,10 +103,12 @@ Configuramos nuestras variables de entorno par conectarlo a nuestro servicio de 
   Si cambiaste las variables de entorno de firebase debes hacer el siguiente proceso par crear un usuario (si no las cambiaste puedes usar el usuario del demo)
     1. ir al archivo src/app/aoo.routes.ts  
     2. encontrar la siguiente linea de codigo y comentarla ...canActivate(() => redirectUnauthorizedTo(['/login'])),  esta linea es una guard que nos da firebase que verifica que estemos autentificados.
-    3. usamos el comando npm start o ng servo -o y nos dirigimos a la siguiente ruta http://localhost:4200/dashboard/users si se esta ejecutando en el puerto 4200
-    4. dentro de esta pagina podemos encontrar un boto que dice crear usuario, le damos click llenamos el formulario y listo.
-    5. volvemos a archivo src/app/aoo.routes.ts 
-    6. descomentamos la liena  ...canActivate(() => redirectUnauthorizedTo(['/login'])),
+    3. Guardamos
+    4. usamos el comando npm start o ng servo -o y nos dirigimos a la siguiente ruta http://localhost:4200/dashboard/users si se esta ejecutando en el puerto 4200
+    5. dentro de esta pagina podemos encontrar un boto que dice crear usuario, le damos click llenamos el formulario y listo.
+    6. volvemos a archivo src/app/aoo.routes.ts 
+    6. descomentamos la linea  ...canActivate(() => redirectUnauthorizedTo(['/login'])),
+    7. y guardamos
   
   y listo la aplicación ya esta funcionando correctamente
 
